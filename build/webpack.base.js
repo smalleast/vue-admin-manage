@@ -6,7 +6,7 @@
   var entries = require('webpack-entries');
   var ExtractTextPlugin = require('extract-text-webpack-plugin');
   var PurifyCSSPlugin = require('purifycss-webpack-plugin');
-  var webpackEntries = entries('src/modules/home/index.js');
+  var webpackEntries = entries(['src/modules/quotes/index.js','src/modules/transitions/index.js']);
   var webpackPlugins = [
     new webpack.ProvidePlugin({
       Vue: 'vue'
