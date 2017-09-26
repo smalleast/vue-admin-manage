@@ -1,6 +1,7 @@
 <template>
   <div class="app-container">
-    <el-button @click="batchQuotes" class="batch">批量报价</el-button>
+    <el-button @click="quotesClear" class="batch">取消</el-button>
+    <el-button @click="quotesComplete" class="batch">完成报价</el-button>
     <el-table ref="multipleTable" tooltip-effect="dark" :data="list" border fit highlight-current-row
               @selection-change="handleSelectionChange">
       <el-table-column align="center" type="selection" width="95">
@@ -136,22 +137,19 @@
           });
         });
       },
-      toggleSelection(rows) {
-        if (rows) {
-          rows.forEach(row => {
-            this.$refs.multipleTable.toggleRowSelection(row);
-          });
-        } else {
-          this.$refs.multipleTable.clearSelection();
-        }
+      quotesClear(){
+
       },
-      handleSelectionChange(val) {
-        this.multipleSelection = val;
-      },
-      batchQuotes(){
-        if (this.multipleSelection.length > 0) {
-          AppBase.local = {quotes: this.multipleSelection};
-        }
+      quotesComplete(){
+        this.$alert('您的报价已发布成功，您可以到报价管理中查看您的报价记录', '温馨提示', {
+          confirmButtonText: '确定',
+          callback: action => {
+            this.$message({
+              type: 'info',
+              message: `action: ${ action }`
+            });
+          }
+        });
       }
     }
   }
