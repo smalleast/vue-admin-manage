@@ -47,7 +47,7 @@
         }
       }
       for (let k in keys) {
-        result[key] = Store.get(keys[k]);
+        result[keys[k]] = Store.get(keys[k]);
       }
       return result;
     },
