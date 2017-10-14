@@ -48,6 +48,7 @@
       hot: true,
       inline:true,
       stats: 'errors-only',
+      host:'192.168.10.48',
       port: 8080,
       proxy: {
         '/helper': {

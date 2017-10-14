@@ -47,7 +47,7 @@
       filename: '[name]-[chunkhash:6].js',
       chunkFilename: '[id]-[chunkhash:6].js',
       minify: false,
-      publicPath: ''
+      publicPath: '/'
     },
     plugins: productPlugins,
     module: $.module,

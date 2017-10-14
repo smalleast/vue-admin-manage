@@ -8,6 +8,8 @@ import 'components/styles/index.scss'
 import App from './app.vue'
 import router from './router'
 import store from './store'
+import './permission'
+import '../../assets/fonts/iconfont.css'
 
 Vue.use(ElementUI, {locale})
 

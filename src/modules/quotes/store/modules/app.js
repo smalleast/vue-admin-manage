@@ -1,10 +1,11 @@
 import Cookies from 'js-cookie'
-
+import defaultImg from '../../../../assets/images/default.png';
 const app = {
   state: {
     sidebar: {
       opened: !+Cookies.get('sidebarStatus')
-    }
+    },
+    defaultImg: defaultImg
   },
   mutations: {
     TOGGLE_SIDEBAR: state => {
@@ -17,7 +18,7 @@ const app = {
     }
   },
   actions: {
-    ToggleSideBar: ({ commit }) => {
+    ToggleSideBar: ({commit}) => {
       commit('TOGGLE_SIDEBAR')
     }
   }

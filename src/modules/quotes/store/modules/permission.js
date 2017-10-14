@@ -1,38 +1,33 @@
-import Home from '../../views/home/index.vue';
-import BidList from '../../views/order-bid/bid-list.vue';
-import BidManage from '../../views/order-bid/bid-manage.vue';
+
+
+import { asyncRouterMap, constantRouterMap } from '../../router/index'
+
 
 const permission = {
   state: {
-    routers: [
-      {
-        path: '/home',
-        component: Home,
-        redirect: 'home/index',
-        name: '企业看板',
-        icon: 'zujian',
-        noDropdown: true,
-        children: [
-          {
-           path: 'index', name: '企业看板', component: Home
-          }
-        ]
-      },
-      {
-        path: '/order',
-        name: "订单竞价",
-        icon: 'tubiao',
-        noDropdown: false,
-        children: [
-          {
-            path: 'bid-list', name: '竞价列表', icon: 'zonghe', component: BidList
-          },
-          {
-            path: 'bid-manage', name: '报价管理', icon: 'zonghe', component: BidManage
-          }]
-      }
-    ],
+    routers:constantRouterMap,
     addRouters: []
+  },
+  mutations: {
+    SET_ROUTERS: (state, routers) => {
+      state.addRouters = routers
+      state.routers = constantRouterMap.concat(routers)
+    }
+  },
+  actions: {
+    GenerateRoutes({ commit }, data) {
+      return new Promise(resolve => {
+        const { roles } = data;
+        let accessedRouters;
+        if (roles.indexOf('admin') >= 0) {
+          accessedRouters = asyncRouterMap
+        } else {
+          accessedRouters = filterAsyncRouter(asyncRouterMap, roles)
+        }
+        commit('SET_ROUTERS', accessedRouters);
+        resolve()
+      })
+    }
   }
 };
 

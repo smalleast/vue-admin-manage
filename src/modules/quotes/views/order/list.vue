@@ -15,7 +15,7 @@
           <img :src="scope.row.src" class="img-size" alt="">
         </template>
       </el-table-column>
-      <el-table-column label="参考尺寸W*D*H(mm)" width="110" align="center">
+      <el-table-column label="参考尺寸W*D*H(mm)" width="170" align="center">
         <template scope="scope">
           {{scope.row.size}}
         </template>
@@ -35,9 +35,8 @@
           {{scope.row.desc}}
         </template>
       </el-table-column>
-      <el-table-column align="center" prop="created_at" label="交互日期" width="200">
+      <el-table-column align="center" prop="created_at" label="交付日期" width="200">
         <template scope="scope">
-          <i class="el-icon-time"></i>
           <span>{{scope.row.date}}</span>
         </template>
       </el-table-column>
@@ -62,35 +61,6 @@
     data() {
       return {
         list: null,
-        tableData3: [{
-          date: '2016-05-03',
-          name: '王小虎',
-          address: '上海市普陀区金沙江路 1518 弄'
-        }, {
-          date: '2016-05-02',
-          name: '王小虎',
-          address: '上海市普陀区金沙江路 1518 弄'
-        }, {
-          date: '2016-05-04',
-          name: '王小虎',
-          address: '上海市普陀区金沙江路 1518 弄'
-        }, {
-          date: '2016-05-01',
-          name: '王小虎',
-          address: '上海市普陀区金沙江路 1518 弄'
-        }, {
-          date: '2016-05-08',
-          name: '王小虎',
-          address: '上海市普陀区金沙江路 1518 弄'
-        }, {
-          date: '2016-05-06',
-          name: '王小虎',
-          address: '上海市普陀区金沙江路 1518 弄'
-        }, {
-          date: '2016-05-07',
-          name: '王小虎',
-          address: '上海市普陀区金沙江路 1518 弄'
-        }],
         multipleSelection: []
       }
     },
@@ -150,8 +120,18 @@
       },
       batchQuotes(){
         if (this.multipleSelection.length > 0) {
-          AppBase.local = {quotes: this.multipleSelection};
+          AppBase.session = {quotes: this.multipleSelection};
+          this.$router.push({path: '/order/detail'});
+        }else {
+          this.$message.error('请先选择产品！');
         }
+      },
+      one() {
+        console.log('one');
+      },
+      two(){
+        console.log('two');
+
       }
     }
   }

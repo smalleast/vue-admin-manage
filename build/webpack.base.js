@@ -6,10 +6,11 @@
   var entries = require('webpack-entries');
   var ExtractTextPlugin = require('extract-text-webpack-plugin');
   var PurifyCSSPlugin = require('purifycss-webpack-plugin');
-  var webpackEntries = entries(['src/modules/quotes/index.js','src/modules/transitions/index.js']);
+  var webpackEntries = entries(['src/modules/quotes/index.js']);
   var webpackPlugins = [
     new webpack.ProvidePlugin({
-      Vue: 'vue'
+      Vue: 'vue',
+      nx: 'next-js-core2',
     }),
     new webpack.NoErrorsPlugin(),
     // split vendor js into its own file,
@@ -21,6 +22,7 @@
       processedEntries[key.slice(12)] = webpackEntries[key];
     }
   }
+
   module.exports = {
     webpackEntries: webpackEntries,
     processedEntries: processedEntries,
@@ -46,16 +48,20 @@
       }, {
         test: /\.scss$/,
         loader: ExtractTextPlugin.extract('style', 'css!autoprefixer!sass!import-glob-loader')
-      }, {
-        test: /\.(gif|jpg|png)\??.*$/,
-        loader: 'url-loader?limit=8096&name=assets/images/[name].[ext]'
-      }, {
-        test: /\.(woff|svg|eot|ttf)\??.*$/,
-        loader: 'url-loader?limit=8096&name=assets/fonts/[name].[ext]'
-      }, {
-        test: /\.(html|tpl)$/,
-        loader: 'html-loader?minimize=false'
-      }]
+      },
+        {
+          test: /\.(gif|jpg|png)\??.*$/,
+          loader: 'url-loader?limit=8096&name=assets/images/[name].[ext]',
+          options:{
+            publicPath:'/'
+          }
+        }, {
+          test: /\.(woff|svg|eot|ttf)\??.*$/,
+          loader: 'url-loader?limit=8096&name=assets/fonts/[name].[ext]'
+        }, {
+          test: /\.(html|tpl)$/,
+          loader: 'html-loader?minimize=false'
+        }]
     },
     vue: {
       loaders: {

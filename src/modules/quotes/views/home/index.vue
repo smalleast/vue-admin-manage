@@ -1,6 +1,6 @@
 <template>
   <div class="home-container">
-    <table class="home-table">
+    <table class="home-table" hidden>
       <tr>
         <td>
           <div class="home-div home-div-1">
@@ -25,18 +25,19 @@
         </td>
       </tr>
     </table>
+    <img :src="homeImg" class="homeImg" alt="">
   </div>
 </template>
 
 <script>
   import {mapGetters} from 'vuex'
-
+  import homeIndex from '../../../../assets/images/index.png';
 
   export default {
     name: 'page2',
     data: function () {
       return {
-        title: "page2"
+        homeImg: homeIndex
       }
     },
     methods: {},
@@ -93,5 +94,10 @@
     }
   }
 
+  .homeImg {
+    width: calc(100% - 180px);
+    height: calc(100% - 100px);
+    object-fit: contain;
+  }
 
 </style>

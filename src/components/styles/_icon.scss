@@ -1,0 +1,56 @@
+
+
+.zl-icon {
+  background-repeat: no-repeat;
+  background-size: contain;
+  display: inline-block;
+  &-logo {
+    width: 58.64px;
+    height: 26px;
+    margin-left: 18px;
+    background-image: url("../../assets/images/zhuluoji.png");
+  }
+  &-message{
+
+    &-1{
+      background-image: url("../../assets/images/nav-xx.png");
+      width: 20px;
+      height:20px;
+    }
+    &-2{
+      background-image: url("../../assets/images/nav-znx.png");
+      width: 20px;
+      height:20px;
+    }
+    &-3{
+      background-image: url("../../assets/images/nav-wd.png");
+      width: 30px;
+      height:30px;
+    }
+  }
+  &-sider{
+    width:20px;
+    height:20px;
+    &-1{
+      background-image: url("../../assets/images/sider-kb.png");
+    }
+    &-2{
+      background-image: url("../../assets/images/sider-jj.png");
+    }
+    &-3{
+      background-image: url("../../assets/images/sider-ht.png");
+    }
+    &-4{
+      background-image: url("../../assets/images/sider-cg.png");
+    }
+    &-5{
+      background-image: url("../../assets/images/sider-az.png");
+    }
+    &-6{
+      background-image: url("../../assets/images/sider-erp.png");
+    }
+    &-7{
+      background-image: url("../../assets/images/sider-tc.png");
+    }
+  }
+}
